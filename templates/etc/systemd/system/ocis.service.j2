@@ -1,0 +1,15 @@
+# {{ ansible_managed }}
+[Unit]
+Description=OCIS server
+Requires={{ ocis_systemd_requires }}
+
+[Service]
+Type=simple
+User={{ ocis_user }}
+Group={{ ocis_group }}
+EnvironmentFile={{ ocis_config_path }}/ocis.env
+ExecStart={{ ocis_bin_path}}/ocis server
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
