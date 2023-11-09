@@ -57,7 +57,7 @@
     owner: ocis
     group: ocis
     mode: '0640'
-  #notify: Restart ocis
+# notify: Restart ocis
 
 - name: Configure ocis systemd service
   ansible.builtin.template:

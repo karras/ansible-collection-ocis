@@ -22,7 +22,7 @@ argument_specs:
         type: str
         required: false
         default: /var/lib/ocis
-      ocis_download_url: 
+      ocis_download_url:
         description:
           - Base URL from where to download the oCIS binary.
         type: str
