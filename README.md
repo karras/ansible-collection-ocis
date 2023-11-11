@@ -2,6 +2,8 @@
 
 Manages and deploys ownCloud Infinite Scale (oCIS).
 
+[![Test](https://github.com/karras/ansible-role-ocis/actions/workflows/test.yml/badge.svg)](https://github.com/karras/ansible-role-ocis/actions/workflows/test.yml) [![Release](https://github.com/karras/ansible-role-ocis/actions/workflows/release.yml/badge.svg)](https://github.com/karras/ansible-role-ocis/actions/workflows/release.yml)
+
 **Note:** Make sure to read and agree to the [oCIS
 EULA](https://doc.owncloud.com/ocis/next/#end-user-license-agreement-eula)
 first.
