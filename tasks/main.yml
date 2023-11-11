@@ -50,7 +50,7 @@
     group: root
     mode: '0755'
 
-- name: Configure ocis environment file
+- name: Configure ocis environment config
   ansible.builtin.template:
     src: etc/ocis/ocis.env.j2
     dest: /etc/ocis/ocis.env
@@ -67,3 +67,19 @@
     group: root
     mode: '0644'
   notify: Reload systemd daemon
+
+- name: Initialize ocis yaml config
+  ansible.builtin.command:
+    cmd: 'ocis init --insecure {{ ocis_env_insecure }} --config-path {{ ocis_config_path }}'
+    creates: '{{ ocis_config_path }}/ocis.yaml'
+  become: true
+  become_user: '{{ ocis_user }}'
+
+# Service related tasks do not work well in molecule idempotence tests
+- name: Enable ocis
+  ansible.builtin.service:
+    name: ocis
+    enabled: true
+    state: started
+  tags:
+    - molecule-idempotence-notest
