@@ -28,36 +28,42 @@ argument_specs:
         type: str
         required: false
         default: 'https://download.owncloud.com/ocis/ocis'
-      ocis_insecure:
+      ocis_env_insecure:
         description:
           - Whether oCIS will generate self-signed certificates or not.
         type: bool
         required: false
         default: false
+      ocis_env_log_level:
+        description:
+          - Log level such as 'warn' or 'debug'.
+        type: str
+        required: false
+        default: warn
+      ocis_env_proxy_http_address:
+        description:
+          - Interface and port to which oCIS binds to.
+        type: str
+        required: false
+        default: '0.0.0.0:9200'
+      ocis_env_proxy_tls:
+        description:
+          - Whether the proxy takes care of TLS termination or not.
+        type: bool
+        required: false
+        default: false
+      ocis_env_url:
+        description:
+          - URL where oCIS will be available from.
+        type: str
+        required: false
+        default: 'https://ocis.example.com'
       ocis_group:
         description:
           - System group used for the oCIS processes.
         type: str
         required: false
         default: ocis
-      ocis_log_level:
-        description:
-          - Log level such as 'warn' or 'debug'.
-        type: str
-        required: false
-        default: warn
-      ocis_proxy_http_address:
-        description:
-          - Interface and port to which oCIS binds to.
-        type: str
-        required: false
-        default: '0.0.0.0:9200'
-      ocis_proxy_tls:
-        description:
-          - Whether the proxy takes care of TLS termination or not.
-        type: bool
-        required: false
-        default: false
       ocis_user:
         description:
           - System user used for the oCIS processes.
@@ -77,12 +83,6 @@ argument_specs:
         type: str
         required: false
         default: var-lib-ocis.mount
-      ocis_url:
-        description:
-          - URL where oCIS will be available from.
-        type: str
-        required: false
-        default: 'https://ocis.example.com'
       ocis_version:
         description:
           - Exact version to install.
