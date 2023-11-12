@@ -1,87 +1,59 @@
-# Ansible Role - ocis
+# Ansible Collection - karras.ocis
 
-Manages and deploys ownCloud Infinite Scale (oCIS).
+Ansible collection to manage ownCloud Infinite Scale (oCIS).
 
-[![Test](https://github.com/karras/ansible-role-ocis/actions/workflows/test.yml/badge.svg)](https://github.com/karras/ansible-role-ocis/actions/workflows/test.yml) [![Release](https://github.com/karras/ansible-role-ocis/actions/workflows/release.yml/badge.svg)](https://github.com/karras/ansible-role-ocis/actions/workflows/release.yml)
+[![Test](https://github.com/karras/ansible-collection-ocis/actions/workflows/test.yml/badge.svg)](https://github.com/karras/ansible-collection-ocis/actions/workflows/test.yml) [![Release](https://github.com/karras/ansible-collection-ocis/actions/workflows/release.yml/badge.svg)](https://github.com/karras/ansible-collection-ocis/actions/workflows/release.yml)
 
-**Note:** Make sure to read and agree to the [oCIS
-EULA](https://doc.owncloud.com/ocis/next/#end-user-license-agreement-eula)
-first.
+## Compatibility
 
-## Example Playbook
+Currently only supports Arch Linux.
 
-As this role is tested via Molecule one can use [that
-playbook](./molecule/default/converge.yml) as a starting point:
+## Roles
 
-```yaml
-TODO
-```
+The following roles are part of this collection:
 
-## Role Variables
+| Role                 | Purpose                              | Dependencies |
+| -------------------- | ------------------------------------ | ------------ |
+| [ocis](./roles/ocis) | ownCloud Infinite Scale (oCIS) setup | n/a          |
 
-The default variables are defined in [defaults/main.yml](./defaults/main.yml):
+Whenever possible only Ansible builtin modules are leveraged, which can lead to
+some more complex tasks structures though.
 
-```yaml
-# Directory where to place the oCIS binary
-ocis_bin_path: /usr/local/bin
+## Usage
 
-# Directory where to place the oCIS configs
-ocis_config_path: /etc/ocis
+Follow the below steps to start using the collection:
 
-# Directory where to place the oCIS data
-ocis_data_path: /var/lib/ocis
-
-# Base URL from where to download the oCIS binary
-ocis_download_url: 'https://download.owncloud.com/ocis/ocis'
-
-# Whether oCIS will generate self-signed certificates or not
-ocis_env_insecure: false
-
-# Log level such as 'warn' or 'debug'
-ocis_env_log_level: warn
-
-# Interface and port to which oCIS binds to
-ocis_env_proxy_http_address: '0.0.0.0:9200'
-
-# Whether the proxy takes care of TLS termination or not
-ocis_env_proxy_tls: false
-
-# URL where oCIS will be available from
-ocis_env_url: 'https://ocis.example.com'
-
-# System group used for the oCIS processes
-ocis_group: ocis
-
-# System user used for the oCIS processes
-ocis_user: ocis
-
-# Release such as 'stable' or 'testing' to install
-# See also https://download.owncloud.com/ocis/ocis/
-ocis_release: stable
-
-# Systemd service 'Requires=' unit dependency, e.g. to depend on a separate
-# mount point
-ocis_systemd_requires: var-lib-ocis.mount
-
-# Exact version to install
-# See also https://download.owncloud.com/ocis/ocis/
-ocis_version: 4.0.2
-```
-
-Another option is to use `ansible-doc` to read the argument specification:
+* Install the latest collection version:
 
 ```sh
-ansible-doc --type role -r . -e main ocis
+ansible-galaxy collection install karras.ocis
 ```
 
-## Requirements
+* Create a new playbook (e.g. `server.yml`) which includes the desired roles:
 
-This roles has no additional requirements.
+```yaml
+---
+
+- name: deploy and manage ocis
+  hosts: all
+  become: yes
+  roles:
+    - karras.ocis.ocis
+```
+
+* Define an inventory, in this case Ansible is executed against localhost:
+
+```ini
+[dev]
+ocis ansible_connection=local
+```
+
+* Finally run the playbook:
+
+```sh
+ansible-playbook server.yml -i inventory -K
+```
 
 ## License
 
 See [LICENSE](./LICENSE)
-
-## Author Information
-
-[Karras](https://github.com/karras)

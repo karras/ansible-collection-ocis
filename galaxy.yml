@@ -1,0 +1,22 @@
+---
+
+namespace: karras
+name: ocis
+version: 1.0.0
+readme: README.md
+authors:
+  - Michael Hofer <@karras>
+description: Ansible collection to manage ownCloud Infinite Scale (oCIS).
+license_file: LICENSE
+tags:
+  - linux
+  - server
+  - owncloud
+  - ocis
+  - archlinux
+dependencies: {}
+repository: https://github.com/karras/ansible-collection-ocis
+documentation: https://github.com/karras/ansible-collection-ocis
+homepage: https://github.com/karras/ansible-collection-ocis
+issues: https://github.com/karras/ansible-collection-ocis/issues
+build_ignore: []
