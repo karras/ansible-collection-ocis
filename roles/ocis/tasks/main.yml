@@ -27,7 +27,7 @@
     path: '{{ ocis_data_path }}'
     owner: '{{ ocis_user }}'
     group: '{{ ocis_group }}'
-    mode: '0755'
+    mode: '0750'
     state: directory
 
 - name: Create ocis config directory
