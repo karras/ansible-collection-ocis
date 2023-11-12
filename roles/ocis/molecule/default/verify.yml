@@ -7,7 +7,7 @@
   tasks:
     - name: Check if ocis was successfully installed
       ansible.builtin.command:
-        ocis version 
+        ocis version
       register: out
       changed_when: false
       failed_when: out.rc != 0
