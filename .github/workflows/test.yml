@@ -27,6 +27,6 @@ jobs:
         run: |
           ansible-lint
 
-          #- name: Test with molecule
-          #  run: |
-          #    cd ./roles/ocis && molecule test
+      - name: Test with molecule
+        run: |
+          cd ./roles/ocis && molecule test
