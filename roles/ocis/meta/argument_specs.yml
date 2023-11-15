@@ -64,6 +64,14 @@ argument_specs:
         type: str
         required: false
         default: ocis
+      ocis_packages:
+        description:
+          - List of ocis packages to install.
+        type: list
+        elements: str
+        required: false
+        default:
+          - sudo
       ocis_user:
         description:
           - System user used for the oCIS processes.

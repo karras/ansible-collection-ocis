@@ -1,5 +1,10 @@
 ---
 
+- name: Install ocis packages
+  ansible.builtin.package:
+    name: '{{ ocis_packages }}'
+    state: present
+
 - name: Create ocis system group
   ansible.builtin.group:
     name: '{{ ocis_group }}'
