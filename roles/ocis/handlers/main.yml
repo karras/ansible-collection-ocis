@@ -3,3 +3,8 @@
 - name: Reload systemd daemon
   ansible.builtin.systemd:
     daemon_reload: true
+
+- name: Restart ocis
+  ansible.builtin.service:
+    name: ocis
+    state: restarted
