@@ -12,7 +12,14 @@ As this role is tested via Molecule one can use [that
 playbook](./molecule/default/converge.yml) as a starting point:
 
 ```yaml
-TODO
+---
+
+- name: Converge
+  hosts: all
+  gather_facts: true
+
+  roles:
+    - role: ocis
 ```
 
 ## Role Variables
