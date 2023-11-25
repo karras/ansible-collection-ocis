@@ -64,9 +64,9 @@ ocis_user: ocis
 # See also https://download.owncloud.com/ocis/ocis/
 ocis_release: stable
 
-# Systemd service 'Requires=' unit dependency, e.g. to depend on a separate
-# mount point
-ocis_systemd_requires: var-lib-ocis.mount
+# Systemd service 'Requires=' unit dependency to depend on a separate mount
+# point (e.g. var-lib-ocis.mount)
+ocis_systemd_requires:
 
 # Exact version to install
 # See also https://download.owncloud.com/ocis/ocis/

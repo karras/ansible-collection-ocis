@@ -86,11 +86,11 @@ argument_specs:
         default: stable
       ocis_systemd_requires:
         description:
-          - Systemd service 'Requires=' unit dependency, e.g. to depend on a
-            separate mount point.
+          - Systemd service 'Requires=' unit dependency to depend on a separate
+            mount point (e.g. var-lib-ocis.mount).
         type: str
         required: false
-        default: var-lib-ocis.mount
+        default:
       ocis_version:
         description:
           - Exact version to install.
