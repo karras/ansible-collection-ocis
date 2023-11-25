@@ -2,6 +2,15 @@
 
 Manages and deploys Traefik.
 
+**Note:** When configuring Let's Encrypt based on the DNS challenge, it's
+recommended to store the appropriate access token for the DNS provider in a
+separate file. The file path (e.g. `/etc/traefik/token`) can then be injected
+via the systemd service file for Traefik (see the role variables). This way the
+token is not exposed directly in any environment variables. See also [Traefik -
+DNS Challenge Providers](https://doc.traefik.io/traefik/https/acme/#providers).
+
+# Example: 
+
 ## Example Playbook
 
 As this role is tested via Molecule one can use [that
