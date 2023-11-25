@@ -1,0 +1,13 @@
+---
+
+- name: Prepare
+  hosts: all
+  gather_facts: true
+
+  tasks:
+    # Update the pacman cache as it's potentialy outdated in the container
+    - name: Update pacman cache
+      ansible.builtin.command:
+        pacman -Sy
+      changed_when: true
+      when: ansible_distribution == 'Archlinux'

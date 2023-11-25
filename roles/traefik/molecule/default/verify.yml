@@ -1,0 +1,13 @@
+---
+
+- name: Verify
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Check if traefik was successfully installed
+      ansible.builtin.command:
+        traefik version
+      register: out
+      changed_when: false
+      failed_when: out.rc != 0

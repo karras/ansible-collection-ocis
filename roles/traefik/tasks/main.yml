@@ -1,0 +1,58 @@
+---
+
+- name: Install traefik packages
+  ansible.builtin.package:
+    name: '{{ traefik_packages }}'
+    state: present
+
+- name: Create traefik log directory
+  ansible.builtin.file:
+    path: '{{ traefik_log_path }}'
+    owner: root
+    group: '{{ traefik_group }}'
+    mode: '0770'
+    state: directory
+
+- name: Configure traefik static config
+  ansible.builtin.template:
+    src: etc/traefik/traefik.yml.j2
+    dest: '{{ traefik_config_path}}/traefik.yml'
+    owner: root
+    group: root
+    mode: '0644'
+  notify: Restart traefik
+
+- name: Configure traefik dynamic config
+  ansible.builtin.template:
+    src: etc/traefik/provider.yml.j2
+    dest: '{{ traefik_config_path}}/provider.yml'
+    owner: root
+    group: root
+    mode: '0644'
+  notify: Restart traefik
+
+- name: Create traefik acme file
+  ansible.builtin.file:
+    path: '{{ traefik_acme_file }}'
+    owner: '{{ traefik_user }}'
+    group: '{{ traefik_group }}'
+    mode: '0600'
+    state: touch
+
+- name: Configure traefik systemd service
+  ansible.builtin.template:
+    src: etc/systemd/system/traefik.service.j2
+    dest: /etc/systemd/system/traefik.service
+    owner: root
+    group: root
+    mode: '0644'
+  notify: Reload systemd daemon
+
+# Service related tasks do not work well in molecule idempotence tests
+- name: Enable traefik
+  ansible.builtin.service:
+    name: traefik
+    enabled: true
+    state: started
+  tags:
+    - molecule-idempotence-notest

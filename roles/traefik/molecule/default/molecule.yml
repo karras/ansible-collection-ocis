@@ -1,0 +1,22 @@
+---
+
+dependency:
+  name: galaxy
+
+driver:
+  name: docker
+
+platforms:
+  - name: instance
+    image: ghcr.io/karras/archlinux-ansible-test:latest
+    pre_build_image: true
+    command: /sbin/init
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+
+provisioner:
+  name: ansible
+
+verifier:
+  name: ansible

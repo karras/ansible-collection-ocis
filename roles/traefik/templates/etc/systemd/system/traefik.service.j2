@@ -1,0 +1,41 @@
+# {{ ansible_managed }}
+[Unit]
+Description=Traefik
+Documentation=https://docs.traefik.io
+After=network-online.target
+AssertFileIsExecutable=/usr/bin/traefik
+
+[Service]
+User=traefik
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+{% for env in traefik_environment %}
+Environment={{ env }}
+{% endfor %}
+
+# Configure service behavior
+Type=notify
+ExecStart=/usr/bin/traefik
+Restart=always
+WatchdogSec=1s
+
+# Lock down system access
+# Prohibit any operating system and configuration modification
+ProtectSystem=strict
+# Create separate, new (and empty) /tmp and /var/tmp filesystems
+PrivateTmp=true
+# Make /home directories inaccessible
+ProtectHome=true
+# Turns off access to physical devices (/dev/...)
+PrivateDevices=true
+# Make kernel settings (procfs and sysfs) read-only
+ProtectKernelTunables=true
+# Make cgroups /sys/fs/cgroup read-only
+ProtectControlGroups=true
+
+# Allow writing of acme.json
+ReadWritePaths={{ traefik_acme_file }}
+# Allow writing logs
+ReadWritePaths={{ traefik_log_path }}/
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,24 @@
+---
+
+galaxy_info:
+  author: Michael Hofer <@karras>
+  description: Manages and deploys Traefik.
+  company: none
+  role_name: traefik
+  namespace: karras
+  license: GPL-3.0-only
+  min_ansible_version: '2.12'
+
+  platforms:
+    - name: ArchLinux
+      versions:
+        - all
+
+  galaxy_tags:
+    - linux
+    - server
+    - traefik
+    - proxy
+    - archlinux
+
+dependencies: []

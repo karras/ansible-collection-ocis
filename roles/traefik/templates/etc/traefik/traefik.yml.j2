@@ -1,0 +1,35 @@
+# {{ ansible_managed }}
+
+global:
+  checkNewVersion: {{ traefik_config.global.checkNewVersion | default('false') | lower }}
+  sendAnonymousUsage: {{ traefik_config.global.sendAnonymousUsage | default('false') | lower }}
+
+api:
+  dashboard: {{ traefik_config.api.dashboard | default('false') | lower }}
+
+{%+ if traefik_config.entryPoints is defined -%}
+entryPoints:
+{% filter indent(width=2) %}
+  {{ traefik_config.entryPoints | ansible.builtin.to_nice_yaml(indent=2, sort_keys=false) }}
+{% endfilter %}
+{%- endif -%}
+
+{%+ if traefik_config.certificatesResolvers is defined -%}
+certificatesResolvers:
+{% filter indent(width=2) %}
+  {{ traefik_config.certificatesResolvers | ansible.builtin.to_nice_yaml(indent=2, sort_keys=false) }}
+{% endfilter %}
+{%- endif -%}
+
+
+providers:
+  file:
+    filename: /etc/traefik/provider.yml
+    watch: true
+
+log:
+  filePath: {{ traefik_config.log.filePath | default('/var/log/traefik/traefik.log') }}
+  level: {{ traefik_config.log.level | default('INFO') }}
+
+accessLog:
+  filePath: {{ traefik_config.accessLog.filePath | default('/var/log/traefik/access.log') }}

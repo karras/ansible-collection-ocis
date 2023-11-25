@@ -12,9 +12,10 @@ Currently only supports Arch Linux.
 
 The following roles are part of this collection:
 
-| Role                 | Purpose                              | Dependencies |
-| -------------------- | ------------------------------------ | ------------ |
-| [ocis](./roles/ocis) | ownCloud Infinite Scale (oCIS) setup | n/a          |
+| Role                       | Purpose                              | Dependencies |
+| -------------------------- | ------------------------------------ | ------------ |
+| [ocis](./roles/ocis)       | ownCloud Infinite Scale (oCIS) setup | n/a          |
+| [traefik](./roles/traefik) | Traefik setup                        | n/a          |
 
 Whenever possible only Ansible builtin modules are leveraged, which can lead to
 some more complex tasks structures though.
@@ -39,6 +40,7 @@ ansible-galaxy collection install karras.ocis
   become: yes
   roles:
     - karras.ocis.ocis
+    - karras.ocis.traefik
 ```
 
 * Define an inventory, in this case Ansible is executed against localhost:
