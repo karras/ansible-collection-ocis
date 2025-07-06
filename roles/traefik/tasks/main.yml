@@ -16,7 +16,7 @@
 - name: Configure traefik static config
   ansible.builtin.template:
     src: etc/traefik/traefik.yml.j2
-    dest: '{{ traefik_config_path}}/traefik.yml'
+    dest: '{{ traefik_config_path }}/traefik.yml'
     owner: root
     group: root
     mode: '0644'
@@ -25,7 +25,7 @@
 - name: Configure traefik dynamic config
   ansible.builtin.template:
     src: etc/traefik/provider.yml.j2
-    dest: '{{ traefik_config_path}}/provider.yml'
+    dest: '{{ traefik_config_path }}/provider.yml'
     owner: root
     group: root
     mode: '0644'
