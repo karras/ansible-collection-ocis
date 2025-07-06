@@ -7,4 +7,4 @@
   tasks:
     - name: Include role traefik
       ansible.builtin.include_role:
-        name: traefik
+        name: karras.ocis.traefik
