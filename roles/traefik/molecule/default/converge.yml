@@ -4,5 +4,7 @@
   hosts: all
   gather_facts: true
 
-  roles:
-    - role: traefik
+  tasks:
+    - name: include role traefik
+      ansible.builtin.include_role:
+        name: traefik

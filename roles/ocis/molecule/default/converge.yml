@@ -4,5 +4,7 @@
   hosts: all
   gather_facts: true
 
-  roles:
-    - role: ocis
+  tasks:
+    - name: include role ocis
+      ansible.builtin.include_role:
+        name: ocis
