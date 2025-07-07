@@ -30,4 +30,4 @@ jobs:
       - name: Test with molecule
         run: |
           cd ./roles/ocis && molecule test
-          cd ../roles/traefik && molecule test
+          cd ../traefik && molecule test
