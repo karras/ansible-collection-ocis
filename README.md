@@ -2,9 +2,9 @@
 
 > [!IMPORTANT]
 > Since [Kiteworks acquired
-> ownCloud](https://owncloud.com/news/owncloud-becomes-part-of-kiteworks/) it
+> ownCloud](https://owncloud.com/news/owncloud-becomes-part-of-kiteworks/), it
 > seems unclear whether oCIS will remain open source or is discontinued. It
-> seems wise to consider migrating to [OpenCloud](https://opencloud.eu/en) or
+> might be worth migrating to [OpenCloud](https://opencloud.eu/en) or
 > [Nextcloud](https://nextcloud.com/) instead.
 
 Ansible collection to manage ownCloud Infinite Scale (oCIS).
